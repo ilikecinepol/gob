@@ -8,10 +8,10 @@ int16_t gx, gy, gz;                  // Переменные для хранен
 
 int enb = 9;                        // Объявление переменных драйвера двигателя
 int ena = 10;
-int in1 = 11;
-int in2 = 12;
-int in3 = 7;
-int in4 = 8;
+int in1 = 7;
+int in2 = 8;
+int in3 = 11;
+int in4 = 12;
 int alphaX0 = 0;
 int alphaY0 = 0;
 //pid settings and gains
@@ -112,7 +112,7 @@ void loop() {
   
   // AutoPID myPID(f_ax, alphaX0, velocity, 0, 250, KP, KI, KD);
   x_vel = map((f_ax - alphaX0), -10000, 10000, -250, 250);
-  y_vel = map((f_ay - alphaY0), -10000, 10000, -250, 250);
+  y_vel = map((alphaY0 - f_ay), -10000, 10000, -250, 250);
   moving(x_vel, y_vel);
 
   
